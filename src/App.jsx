@@ -10,7 +10,6 @@ function App() {
     <div className="App">
       <h1>My Todo App</h1>
       <Form todos={todos} setTodos={setTodos} />
-      <hr />
       <TodoList todos={todos} setTodos={setTodos} />
     </div>
   );
