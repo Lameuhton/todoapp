@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 function Form({ todos, setTodos }) {
-  const [newTodo, setNewTodo] = useState('');
 
-  const handleInputChange = (event) => {
-    setNewTodo(event.target.value);
-  };
+  const inputRef = useRef();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (newTodo.trim() !== '') {
+    const inputElement = inputRef.current.value;
+    if (inputElement.trim() !== '') {
       setTodos(prevTodos => [
         ...prevTodos,
-        { text: newTodo, completed: false }
+        { text: inputElement, completed: false }
       ]);
-      setNewTodo('');
     }
   };
 
@@ -25,8 +22,7 @@ function Form({ todos, setTodos }) {
         type="text"
         id="newTodo"
         name="newTodo"
-        value={newTodo}
-        onChange={handleInputChange}
+        ref={inputRef}
         required
       />
       <button type="submit">Add Todo</button>
