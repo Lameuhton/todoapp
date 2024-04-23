@@ -38,12 +38,17 @@
 }
 
 #root li input {
-  margin-right: 15px;
+  margin: 0 15px 0 0;
 }
 
 #root li {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+li label {
+  display: flex;
   align-items: center;
 }
 
