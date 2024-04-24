@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 function TodoList({ todos, setTodos }) {
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingText, setEditingText] = useState('');
+  let todosLeft = 0;
 
   useEffect(() => {
     const storedTodos = localStorage.getItem('todos');
@@ -21,6 +22,12 @@ function TodoList({ todos, setTodos }) {
         i === index ? { ...todo, completed: !todo.completed } : todo
       )
     );
+
+    todosLeft = todos.filter(todo => !todo.completed).length;
+    if (todos.length === 0 || todosLeft === todos.length) {
+      todosLeft = 0;
+    };
+
   };
 
   const handleDelete = (index) => {
@@ -44,9 +51,14 @@ function TodoList({ todos, setTodos }) {
     setEditingText('');
   };
 
+  
   return (
     <section>
-      <h2>Todos:</h2>
+      <div>
+        <h2>Todos:</h2>
+        <p>{todosLeft} todos left</p>
+      </div>
+      
       <ul>
         {todos.map((todo, index) => (
           <li key={index}>
@@ -65,7 +77,7 @@ function TodoList({ todos, setTodos }) {
                   <input
                     type="checkbox"
                     checked={todo.completed}
-                    onChange={() => handleToggle(index)}
+                    onChange={() => {handleToggle(index)}}
                   />
                   {todo.text}
                 </label>
