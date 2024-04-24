@@ -71,6 +71,20 @@ li label {
   overflow: auto;
 }
 
+.titleTodos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titleTodos p {
+  border: 2px dashed #242424;
+  padding: 2px 5px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+
 .pen, .trash {
   padding: 0.2em 0.3em;
 }

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 function TodoList({ todos, setTodos }) {
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingText, setEditingText] = useState('');
-  let todosLeft = 0;
+  const [todosLeft, setTodosLeft] = useState(0);
 
   useEffect(() => {
     const storedTodos = localStorage.getItem('todos');
@@ -14,6 +14,8 @@ function TodoList({ todos, setTodos }) {
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
+    const remainingTodos = todos.filter(todo => !todo.completed).length;
+    setTodosLeft(remainingTodos);
   }, [todos]);
 
   const handleToggle = (index) => {
@@ -22,12 +24,6 @@ function TodoList({ todos, setTodos }) {
         i === index ? { ...todo, completed: !todo.completed } : todo
       )
     );
-
-    todosLeft = todos.filter(todo => !todo.completed).length;
-    if (todos.length === 0 || todosLeft === todos.length) {
-      todosLeft = 0;
-    };
-
   };
 
   const handleDelete = (index) => {
@@ -54,7 +50,7 @@ function TodoList({ todos, setTodos }) {
   
   return (
     <section>
-      <div>
+      <div className='titleTodos'>
         <h2>Todos:</h2>
         <p>{todosLeft} todos left</p>
       </div>
