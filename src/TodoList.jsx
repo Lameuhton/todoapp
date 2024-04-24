@@ -54,7 +54,7 @@ function TodoList({ todos, setTodos }) {
         <h2>Todos:</h2>
         <p>{todosLeft} todos left</p>
       </div>
-      
+      <div className="hr"></div>
       <ul>
         {todos.map((todo, index) => (
           <li key={index}>

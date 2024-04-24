@@ -59,8 +59,9 @@
   align-items: center;
 }
 
-#root hr {
-  border: 1px solid #242424;
+#root .hr {
+  border-top: 2px dashed #242424;
+  margin: 10px 0 30px 0;
 
 }
 
