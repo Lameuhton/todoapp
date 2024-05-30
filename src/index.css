@@ -42,16 +42,3 @@ button:hover {
   background-color: #FFC4E1;
   color: #1a1a1a;
 }
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
